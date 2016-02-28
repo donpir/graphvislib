@@ -1,3 +1,73 @@
+function LineEquation(x0, y0, x1, y1) {
+    this.m = (y1-y0) / (x1 - x0);
+    this.pt0 = { x: x0, y: y0 };
+    this.b = - this.m * x0 + y0; //y = mx + b;
+
+}
+
+LineEquation.prototype = (function() {
+
+    /*var m = 0;
+    var pt0 = null;
+    var b = 0;//y = mx + b;*/
+
+    return {
+        constructor: LineEquation,
+
+        /*init: function (x0, y0, x1, y1) {
+            this.m = (y1-y0) / (x1 - x0);
+            this.pt0 = { x: x0, y: y0 };
+            this.b = - m * x0 + y0;
+
+            return this;
+        },//EndFunction.*/
+
+        point0: function () { return this.pt0; },
+        computeY: function (X) {
+            return this.m * X + this.b;
+        },
+
+        pointAtDist: function (dist) {
+            if (!isFinite(this.m))
+                return { x: this.pt0.x, y: this.pt0.y + dist };
+
+            var m2 = this.m * this.m;
+            var d2 = dist * dist;
+            var xd = Math.sqrt(d2 / (m2 + 1)) + this.pt0.x;
+            var yd = this.m * (xd - this.pt0.x) + this.pt0.y;
+
+            return { x: xd, y: yd };
+        },
+
+        check: function (x, y) {
+            var div = this.computeY(x);
+            return isFinite(div) ? div == y : true;
+        },//EndFunction.
+
+        rotate90Degree: function(pivotX, pivotY) {
+            if (typeof pivotX == 'undefined')
+                pivotX = this.pt0.x, pivotY = this.pt0.y;
+
+            //Check weather the point is on the line.
+            var isValidPoint = this.check(pivotX, pivotY);
+            if (isValidPoint == false)
+                throw "Not valid pivot number";
+
+            if (isFinite(this.m)) this.m = 1 / this.m;
+            else this.m = 0;
+
+            return this;
+        },//EndFunction.
+
+        translatePerpendicularly: function (dist) {
+            this.rotate90Degree();
+            this.pt0 = this.pointAtDist(dist);
+            this.rotate90Degree();
+            return this;
+        }//EndFunction.
+    }
+})();
+
 function GeomMathUtils() {
     console.log("constructor.");
 }//EndConstructor.

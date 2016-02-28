@@ -20,10 +20,31 @@ function SimilarityGraphViz() {
         var pDst = _geomMath.intersectCircumferenceSegment(nd2.cx, nd2.cy, _radius, nd1.cx, nd1.cy);
         var segmentLength = _geomMath.calculateSegmentLength(pSrc.x, pSrc.y, pDst.x, pDst.y);
 
+        //CENTRAL LINE.
+        var lineEq = new LineEquation(pSrc.x, pSrc.y, pDst.x, pDst.y);
+        var p0up = lineEq.point0();
+        var p1up = lineEq.pointAtDist(segmentLength);
         _svg.append("line")
-            .attr("x1", pSrc.x).attr("y1", pSrc.y)
-            .attr("x2", pDst.x).attr("y2", pDst.y)
+            .attr("x1", p0up.x).attr("y1", p0up.y)
+            .attr("x2", p1up.x).attr("y2", p1up.y)
             .style("stroke-width", "1").style("stroke", "lightgrey");
+
+
+        //UPLINE-DOWNLINE.
+        var lineEqUp = new LineEquation(pSrc.x, pSrc.y, pDst.x, pDst.y);
+        var p0up = lineEqUp.translatePerpendicularly(-1).point0();
+        var p1up = lineEqUp.pointAtDist(segmentLength);
+        //_svg.append("line").attr("x1", p0up.x).attr("y1", p0up.y).attr("x2", p1up.x).attr("y2", p1up.y).style("stroke-width", "1").style("stroke", "lightgrey");
+
+        var lineEqDown = new LineEquation(pSrc.x, pSrc.y, pDst.x, pDst.y);
+        var p0down = lineEqDown.translatePerpendicularly(1).point0();
+        var p1down = lineEqDown.pointAtDist(segmentLength);
+        //_svg.append("line").attr("x1", p0down.x).attr("y1", p0down.y).attr("x2", p1down.x).attr("y2", p1down.y).style("stroke-width", "1").style("stroke", "black");
+
+        //lineEq.rotate90Degree(); //(pSrc.x, pSrc.y);
+        /*var tgSrc = lineEq.point0();
+        var p0Up = lineEq.pointAtDist(1);
+        var p0Down = lineEq.pointAtDist(-1);*/
 
 
         var song1 = "0*+2*-2*+2*+2*+1*-1*+1*+2*+2*-2*-2*-1*-2*-2*0*0*0*+2*-2*+2*+2*0*p*0*+1*-1*+1*+2*0*0*+2*-2*-2*-1*-2*-2*0*0*p*0*+2*-2*+2*+2*0*p*0*+1*-1*+1*+2*0*+2*-2*-2*-1*-2*-2*+2*-2*+2*+2*1*-1*+1*+2*+2*-2*-2*-1*-2*-2";
@@ -34,6 +55,86 @@ function SimilarityGraphViz() {
             return (i * length) / n;
         };//EndFunction.
 
+        /////////////////////////////////
+        var data = [];
+        data.push({ pos: 155, length: 13 });
+        data.push({ pos: 7, length: 13 });
+        data.push({ pos: 97, length: 13 });
+
+        data.push({ pos: 13, length: 11 });
+        data.push({ pos: 67, length: 11 });
+        data.push({ pos: 127, length: 11 });
+
+        data.push({ pos: 24, length: 11 });
+        data.push({ pos: 117, length: 11 });
+
+        data.forEach(function(element) {
+            element.pos = interpol(element.pos, maxSongChars, segmentLength);
+            element.length = interpol(element.length, maxSongChars, segmentLength);
+
+            var p0 = lineEq.pointAtDist(element.pos);
+            var p1 = lineEq.pointAtDist(element.pos + element.length);
+
+            _svg.append("line").attr("x1", p0.x).attr("y1", p0.y).attr("x2", p1.x).attr("y2", p1.y).style("stroke-width", "3").style("stroke", "red");
+        });
+
+        /////////////////////////////////
+        return;
+        //UP.
+        var data = [];
+        data.push({ pos: 155, length: 13 });
+        data.forEach(function(element) {
+            element.pos = interpol(element.pos, maxSongChars, segmentLength);
+            element.length = interpol(element.length, maxSongChars, segmentLength);
+
+            var p0 = lineEqUp.pointAtDist(element.pos);
+            var p1 = lineEqUp.pointAtDist(element.pos + element.length);
+
+            _svg.append("line").attr("x1", p0.x).attr("y1", p0.y).attr("x2", p1.x).attr("y2", p1.y).style("stroke-width", "2").style("stroke", "rgb(244,67,54)");
+        });
+        var data = [];
+        data.push({ pos: 7, length: 13 });
+        data.push({ pos: 97, length: 13 });
+        data.forEach(function(element) {
+            element.pos = interpol(element.pos, maxSongChars, segmentLength);
+            element.length = interpol(element.length, maxSongChars, segmentLength);
+
+            var p0 = lineEqDown.pointAtDist(element.pos);
+            var p1 = lineEqDown.pointAtDist(element.pos + element.length);
+
+            _svg.append("line").attr("x1", p0.x).attr("y1", p0.y).attr("x2", p1.x).attr("y2", p1.y).style("stroke-width", "2").style("stroke", "rgb(244,67,54)");
+        });
+
+        //UP.
+        var data = [];
+        data.push({ pos: 13, length: 11 });
+        data.push({ pos: 67, length: 11 });
+        data.push({ pos: 127, length: 11 });
+        data.forEach(function(element) {
+            element.pos = interpol(element.pos, maxSongChars, segmentLength);
+            element.length = interpol(element.length, maxSongChars, segmentLength);
+
+            var p0 = lineEqUp.pointAtDist(element.pos);
+            var p1 = lineEqUp.pointAtDist(element.pos + element.length);
+
+            _svg.append("line").attr("x1", p0.x).attr("y1", p0.y).attr("x2", p1.x).attr("y2", p1.y).style("stroke-width", "2").style("stroke", "rgb(63,81,181)");
+        });
+        var data = [];
+        data.push({ pos: 24, length: 11 });
+        data.push({ pos: 117, length: 11 });
+        data.forEach(function(element) {
+            element.pos = interpol(element.pos, maxSongChars, segmentLength);
+            element.length = interpol(element.length, maxSongChars, segmentLength);
+
+            var p0 = lineEqDown.pointAtDist(element.pos);
+            var p1 = lineEqDown.pointAtDist(element.pos + element.length);
+
+            _svg.append("line").attr("x1", p0.x).attr("y1", p0.y).attr("x2", p1.x).attr("y2", p1.y).style("stroke-width", "2").style("stroke", "rgb(63,81,181)");
+        });
+
+
+        /////////////////// PREV RELEASE..
+        return;
         var data = [];
         data.push({ pos: 7, length: 13 });
         data.push({ pos: 97, length: 13 });

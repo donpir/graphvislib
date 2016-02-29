@@ -24,22 +24,21 @@ function SimilarityGraphViz() {
         var lineEq = new LineEquation(pSrc.x, pSrc.y, pDst.x, pDst.y);
         var p0up = lineEq.point0();
         var p1up = lineEq.pointAtDist(segmentLength);
-        _svg.append("line")
+        /*_svg.append("line")
             .attr("x1", p0up.x).attr("y1", p0up.y)
             .attr("x2", p1up.x).attr("y2", p1up.y)
-            .style("stroke-width", "1").style("stroke", "lightgrey");
-
+            .style("stroke-width", "2").style("stroke", "lightgrey");*/
 
         //UPLINE-DOWNLINE.
         var lineEqUp = new LineEquation(pSrc.x, pSrc.y, pDst.x, pDst.y);
-        var p0up = lineEqUp.translatePerpendicularly(-1).point0();
+        var p0up = lineEqUp.translatePerpendicularly(-1.5).point0();
         var p1up = lineEqUp.pointAtDist(segmentLength);
-        //_svg.append("line").attr("x1", p0up.x).attr("y1", p0up.y).attr("x2", p1up.x).attr("y2", p1up.y).style("stroke-width", "1").style("stroke", "lightgrey");
+        _svg.append("line").attr("x1", p0up.x).attr("y1", p0up.y).attr("x2", p1up.x).attr("y2", p1up.y).style("stroke-width", "1").style("stroke", "lightgrey");
 
         var lineEqDown = new LineEquation(pSrc.x, pSrc.y, pDst.x, pDst.y);
-        var p0down = lineEqDown.translatePerpendicularly(1).point0();
+        var p0down = lineEqDown.translatePerpendicularly(1.5).point0();
         var p1down = lineEqDown.pointAtDist(segmentLength);
-        //_svg.append("line").attr("x1", p0down.x).attr("y1", p0down.y).attr("x2", p1down.x).attr("y2", p1down.y).style("stroke-width", "1").style("stroke", "black");
+        _svg.append("line").attr("x1", p0down.x).attr("y1", p0down.y).attr("x2", p1down.x).attr("y2", p1down.y).style("stroke-width", "1").style("stroke", "lightgrey");
 
         //lineEq.rotate90Degree(); //(pSrc.x, pSrc.y);
         /*var tgSrc = lineEq.point0();
@@ -56,7 +55,7 @@ function SimilarityGraphViz() {
         };//EndFunction.
 
         /////////////////////////////////
-        var data = [];
+        /*var data = [];
         data.push({ pos: 155, length: 13 });
         data.push({ pos: 7, length: 13 });
         data.push({ pos: 97, length: 13 });
@@ -77,9 +76,11 @@ function SimilarityGraphViz() {
 
             _svg.append("line").attr("x1", p0.x).attr("y1", p0.y).attr("x2", p1.x).attr("y2", p1.y).style("stroke-width", "3").style("stroke", "red");
         });
+        return;
+        */
 
         /////////////////////////////////
-        return;
+
         //UP.
         var data = [];
         data.push({ pos: 155, length: 13 });
@@ -117,7 +118,7 @@ function SimilarityGraphViz() {
             var p0 = lineEqUp.pointAtDist(element.pos);
             var p1 = lineEqUp.pointAtDist(element.pos + element.length);
 
-            _svg.append("line").attr("x1", p0.x).attr("y1", p0.y).attr("x2", p1.x).attr("y2", p1.y).style("stroke-width", "2").style("stroke", "rgb(63,81,181)");
+            _svg.append("line").attr("x1", p0.x).attr("y1", p0.y).attr("x2", p1.x).attr("y2", p1.y).style("stroke-width", "2").style("stroke", "orange");
         });
         var data = [];
         data.push({ pos: 24, length: 11 });
@@ -129,7 +130,7 @@ function SimilarityGraphViz() {
             var p0 = lineEqDown.pointAtDist(element.pos);
             var p1 = lineEqDown.pointAtDist(element.pos + element.length);
 
-            _svg.append("line").attr("x1", p0.x).attr("y1", p0.y).attr("x2", p1.x).attr("y2", p1.y).style("stroke-width", "2").style("stroke", "rgb(63,81,181)");
+            _svg.append("line").attr("x1", p0.x).attr("y1", p0.y).attr("x2", p1.x).attr("y2", p1.y).style("stroke-width", "2").style("stroke", "orange");
         });
 
 

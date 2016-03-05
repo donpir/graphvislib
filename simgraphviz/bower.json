@@ -1,0 +1,19 @@
+{
+  "name": "simgraphviz",
+  "version": "0.0.1",
+  "homepage": "https://github.com/donpir/muviz",
+  "authors": [
+    "Donato Pirozzi <donatopirozzi@gmail.com>"
+  ],
+  "license": "GPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.5.16"
+  }
+}

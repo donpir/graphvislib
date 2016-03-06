@@ -5,6 +5,10 @@
     <title>Similarity Graph Viz</title>
     <script type="text/javascript" src="../bower_components/d3/d3.min.js"></script>
     <script type="text/javascript" src="../src/GeomMathUtils.js"></script>
+
+    <script type="text/javascript" src="../src/Behaviours.js"></script>
+    <script type="text/javascript" src="../src/DoubleEdgeGraphBehaviour.js"></script>
+
     <script type="text/javascript" src="../src/SimilarityGraphViz.js"></script>
 
     <style>
@@ -44,11 +48,16 @@
             xhttp.send(null);
         };//EndFunction.
 
+
         httpGetAsync("datasets/songs.json", loadGraphViz);
 
         function loadGraphViz(sGraphModel) {
             var graphModel = JSON.parse(sGraphModel);
-            var myGraph = SimilarityGraphViz();
+            var myGraph = null;
+
+            //myGraph = SimilarityGraphViz(new BasicBehaviour());
+            myGraph = SimilarityGraphViz(new DoubleEdgeGraphBehaviour());
+
             myGraph(graphModel);
         };//EndFunction.
     </script>

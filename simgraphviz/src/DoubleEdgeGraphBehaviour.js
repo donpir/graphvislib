@@ -8,6 +8,11 @@ DoubleEdgeGraphBehaviour.prototype = (function () {
     var markerdown = null;
     var _radius = 20;
 
+    var color = d3.scale.category20();
+
+    var col1 = "red";
+    var col2 = "orange";
+
     var  _proportion = function (subSegmentStart, subSegmentLength, segmentLength) {
         return (subSegmentStart * segmentLength) / subSegmentLength;
     };//EndFunction.
@@ -42,7 +47,8 @@ DoubleEdgeGraphBehaviour.prototype = (function () {
             return d.position.source.x;
         })  .attr("y1", function(d) { return d.position.source.y; })
             .attr("x2", function(d) { return d.position.target.x; })
-            .attr("y2", function(d) { return d.position.target.y; });
+            .attr("y2", function(d) { return d.position.target.y; })
+            .style("stroke", function(d) { return d.group == 1 ? col1: col2; });
     };//EndFunction.
 
     return {

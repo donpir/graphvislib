@@ -60,8 +60,8 @@
             var graphModel = JSON.parse(sGraphModel);
             var myGraph = null;
 
-            myGraph = SimilarityGraphViz(new BasicBehaviour());
-            //myGraph = SimilarityGraphViz(new DoubleEdgeGraphBehaviour());
+            //myGraph = SimilarityGraphViz(new BasicBehaviour());
+            myGraph = SimilarityGraphViz(new DoubleEdgeGraphBehaviour());
 
             myGraph(graphModel);
         };//EndFunction.

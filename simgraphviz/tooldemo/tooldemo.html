@@ -18,14 +18,19 @@
             stroke-width: 1.5px;
         }
 
-        .link {
+        .link, .linkup, .linkdown {
             stroke: #999;
             stroke-opacity: .6;
             stroke-width: 2px;
         }
 
-        .linkMarker {
+        .linkMarker, .linkMarkerUp, .linkMarkerDown {
             stroke: red;
+            stroke-width: 3px;
+        }
+
+        .linkMarkerDown {
+            stroke: blue;
             stroke-width: 3px;
         }
 
@@ -55,8 +60,8 @@
             var graphModel = JSON.parse(sGraphModel);
             var myGraph = null;
 
-            //myGraph = SimilarityGraphViz(new BasicBehaviour());
-            myGraph = SimilarityGraphViz(new DoubleEdgeGraphBehaviour());
+            myGraph = SimilarityGraphViz(new BasicBehaviour());
+            //myGraph = SimilarityGraphViz(new DoubleEdgeGraphBehaviour());
 
             myGraph(graphModel);
         };//EndFunction.

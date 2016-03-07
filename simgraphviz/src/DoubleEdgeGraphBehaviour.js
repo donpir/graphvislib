@@ -4,7 +4,8 @@ DoubleEdgeGraphBehaviour.prototype = (function () {
 
     var linkup = null;
     var linkdown = null;
-    var marker = null;
+    var markerup = null;
+    var markerdown = null;
     var _radius = 20;
 
     var  _proportion = function (subSegmentStart, subSegmentLength, segmentLength) {
@@ -14,8 +15,8 @@ DoubleEdgeGraphBehaviour.prototype = (function () {
     var _placeMarker = function (marker) {
         var compute = function(d) {
 
-            var source = GeomMathUtils.IntersectCircumferenceSegment(d.source.x, d.source.y, _radius, d.target.x, d.target.y);
-            var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, _radius, d.source.x, d.source.y);
+            var source = GeomMathUtils.IntersectCircumferenceSegment(d.position.source.x, d.position.source.y, _radius, d.position.target.x, d.position.target.y);
+            var target = GeomMathUtils.IntersectCircumferenceSegment(d.position.target.x, d.position.target.y, _radius, d.position.source.x, d.position.source.y);
 
             var lineEq = new LineEquation(source.x, source.y, target.x, target.y);
             var linkLength = LineEquation.CalculateSegmentLength(source.x, source.y, target.x, target.y);
@@ -51,39 +52,68 @@ DoubleEdgeGraphBehaviour.prototype = (function () {
             this._svg = svg;
             this._jsonGraph = jsonGraph;
 
+            /*linkup = this._svg.selectAll(linkup)
+                .data(this._jsonGraph.links.filter(function(d) { return (typeof d.type != 'undefined' && d.type == 'marker' && d.node == d.source.index); }))
+                .enter().append("line")
+                .attr("class", "linkup");*/
+
             var lnkShapes = this._svg.selectAll(".lnkShapes")
                 .data(this._jsonGraph.links).enter();
 
             linkup = lnkShapes
                 .append("line")
                 .filter(function (d) { return (typeof d.type == 'undefined'); })
-                .attr("class", "link");
+                .attr("class", "linkup");
 
             linkdown = lnkShapes
                 .append("line")
                 .filter(function (d) { return (typeof d.type == 'undefined'); })
-                .attr("class", "link");
+                .attr("class", "linkdown");
 
-            marker = lnkShapes
+            markerup = lnkShapes
                 .append("line")
-                .filter(function (d) { return (typeof d.type != 'undefined' && d.type == 'marker'); })
-                .attr("class", "linkMarker");
+                .filter(function (d) { return (typeof d.type != 'undefined' && d.type == 'marker' && d.node == d.source.index); })
+                .attr("class", "linkMarkerUp");
+
+            markerdown = lnkShapes
+                .append("line")
+                .filter(function (d) { return (typeof d.type != 'undefined' && d.type == 'marker' && d.node == d.target.index); })
+                .attr("class", "linkMarkerDown");
+
+            /*marker = lnkShapes
+                .append("line")
+                .filter(function (d) { return (typeof d.type != 'undefined' && d.type == 'marker' && d.node == d.source.index); })
+                .attr("class", "linkMarker");*/
         },
 
         preUpdate: function() {
-            linkup.each(function (lnk) {
+
+            var move = function(lnk, dist) {
                 var lineEq = new LineEquation(lnk.source.x, lnk.source.y, lnk.target.x, lnk.target.y);
-                lineEq.translatePerpendicularly(-1.5);
+                lineEq.translatePerpendicularly(dist);
                 lnk.position = lineEq.position;
-            })  .attr("x1", function(d) { return d.position.source.x; })
+            };
+
+            linkup.each(function (lnk) { move(lnk, -2); })
+                .attr("x1", function(d) { return d.position.source.x; })
                 .attr("y1", function(d) { return d.position.source.y; })
                 .attr("x2", function(d) { return d.position.target.x; })
                 .attr("y2", function(d) { return d.position.target.y; });
-            //BasicBehaviour.PlaceEdges(linkdown);
+
+            linkdown.each(function (lnk) { move(lnk, 2); })
+                .attr("x1", function(d) { return d.position.source.x; })
+                .attr("y1", function(d) { return d.position.source.y; })
+                .attr("x2", function(d) { return d.position.target.x; })
+                .attr("y2", function(d) { return d.position.target.y; });
+
+            markerup.each(function (lnk) { move(lnk, -2); });
+            markerdown.each(function (lnk) { move(lnk, 2); });
+            _placeMarker(markerup);
+            _placeMarker(markerdown);
         },
 
         update: function() {
-            _placeMarker(marker);
+
         }
     }
 })();

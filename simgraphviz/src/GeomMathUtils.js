@@ -36,7 +36,7 @@ LineEquation.prototype = (function() {
 
         calculateLength: function () {
             return LineEquation.CalculateSegmentLength
-            (this.position.target.x, this.position.source.x, this.position.target.y, this.position.source.y);
+            (this.position.source.x, this.position.source.y, this.position.target.x, this.position.target.y);
         },
 
         updateB: function () {
@@ -54,7 +54,7 @@ LineEquation.prototype = (function() {
             var xdMinusXs = Math.sqrt(d2 / (m2 + 1));
 
             var sign =  (this.position.source.x <= this.position.target.x) ? 1 : -1;
-            xdMinusXs *= sign;
+            xdMinusXs *= sign * Math.sign(dist);
 
             var yd = this.m * xdMinusXs + this.pt0.y;
 
@@ -70,6 +70,13 @@ LineEquation.prototype = (function() {
             return isFinite(div) ? div.toFixed(10) == y.toFixed(10) : true;
         },//EndFunction.
 
+        /**
+         *
+         * @param pivotX
+         * @param pivotY
+         * @returns {LineEquation}
+         * @deprecated
+         */
         rotate90Degree: function(pivotX, pivotY) {
             if (typeof pivotX == 'undefined')
                 pivotX = this.pt0.x, pivotY = this.pt0.y;
@@ -85,15 +92,39 @@ LineEquation.prototype = (function() {
             return this;
         },//EndFunction.
 
+        perpendicularLineIn: function (pivotX, pivotY) {
+            if (typeof pivotX == 'undefined')
+                pivotX = this.pt0.x, pivotY = this.pt0.y;
+
+            //Check weather the point is on the line.
+            /*var isValidPoint = this.check(pivotX, pivotY);
+             if (isValidPoint == false)
+             throw "Not valid pivot number";*/
+
+            if (isFinite(this.m)) this.m = -1 / this.m;
+
+            this.updateB();
+
+            return this;
+        },//EndFunction.
+
         translatePerpendicularly: function (dist) {
             var lastLength = this.calculateLength();
+            this.perpendicularLineIn(this.pt0.x, this.pt0.y);
+            this.pt0 = this.pointAtDist(dist);
+            this.perpendicularLineIn(this.pt0.x, this.pt0.y);
+
+            var ptEnd = this.pointAtDist(lastLength);
+            this.position = { source: { x: this.pt0.x, y: this.pt0.y }, target: { x: ptEnd.x, y: ptEnd.y }};
+            return this;
+            /*var lastLength = this.calculateLength();
             this.rotate90Degree();
             this.pt0 = this.pointAtDist(dist);
             this.updateB();
             this.rotate90Degree();
             var ptEnd = this.pointAtDist(lastLength);
             this.position = { source: { x: this.pt0.x, y: this.pt0.y }, target: { x: ptEnd.x, y: ptEnd.y }};
-            return this;
+            return this;*/
         }//EndFunction.
     }
 })();

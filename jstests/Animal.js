@@ -24,8 +24,9 @@ Animal.prototype = (function() {
 function Dog() {
     var animal = new Animal();
     animal.name = "dog";
-    animal.prototype.sayHello = function() {
-        console.log("Hi sub" + this.name);
-    }
+    animal.sayHello = function() {
+        console.log("Hi sub " + this.name);
+    };
+    return animal;
 }
 

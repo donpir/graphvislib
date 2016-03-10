@@ -32,10 +32,10 @@ function SimilarityGraphViz(behaviour) {
             .links(jsonGraph.links)
             .start();
 
-        _behaviour.init(_svg, jsonGraph);
+        _behaviour.init(_svg, jsonGraph, _force);
 
         //NODES.
-        var nodeShapes = _svg.selectAll(".nodeShapes")
+        /*var nodeShapes = _svg.selectAll(".nodeShapes")
             .data(jsonGraph.nodes)
             .enter();
 
@@ -47,13 +47,13 @@ function SimilarityGraphViz(behaviour) {
 
         var title = nodeShapes.append("text")
             .attr("class", "nodeTitle")
-            .text(function(d) { return d.name; });
+            .text(function(d) { return d.name; });*/
 
 
         _force.on("tick", function() {
-            _behaviour.preUpdate();
+            //_behaviour.preUpdate();
 
-            node.attr("cx", function (d) {
+            /*node.attr("cx", function (d) {
                 return d.x;
             }).attr("cy", function (d) {
                     return d.y;
@@ -61,7 +61,7 @@ function SimilarityGraphViz(behaviour) {
 
             title.attr("x", function(d) { return d.x - _radius; })
                  .attr("y", function(d) { return d.y - _radius; });
-
+            */
 
             _behaviour.update();
         });

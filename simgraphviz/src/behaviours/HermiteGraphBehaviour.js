@@ -1,4 +1,7 @@
 
+var col1 = "red";
+var col2 = "orange";
+
 function HermiteGraphBehaviour() {
 };//EndConstructor.
 
@@ -18,7 +21,7 @@ HermiteGraphBehaviour.prototype.init = function(svg, jsonGraph, force) {
 
     this.link = this.linkShapes
         .append("line")
-        .filter(function (d) { return (typeof d.type == 'undefined'); })
+        //.filter(function (d) { return (typeof d.type == 'marker' && d.ends.length > 0); })
         .attr("class", "link");
 
     //NODES.
@@ -39,13 +42,25 @@ HermiteGraphBehaviour.prototype.init = function(svg, jsonGraph, force) {
 HermiteGraphBehaviour.prototype.update = function() {
     var _this = this;
 
+    var reducer = 8;
+    var nodeWidth = _this._radious/2;
+
     //It places the nodes.
     this.node.attr("x", function(d) { return d.x; })
         .attr("y", function(d) { return d.y; })
-        .attr("width", function(d) { return _this._radious/2; })
-        .attr("height", function(d) { return d.length / 8; });
+        .attr("width", function(d) { return nodeWidth; })
+        .attr("height", function(d) { return d.length / reducer; });
 
     //It places the nodes labels.
     this.title.attr("x", function(d) { return d.x - _this._radious; })
         .attr("y", function(d) { return d.y - 3; });
+
+    this.link
+        .attr("x1", function(d) { return d.source.x + ((d.source.x < d.target.x) ? nodeWidth : 0); })
+        .attr("y1", function(d) { return d.source.y + d.sourceStart / reducer; })
+        .attr("x2", function(d) { return d.target.x + ((d.source.x < d.target.x) ? 0 : nodeWidth); })
+        .attr("y2", function(d) { return d.target.y + d.targetStart / reducer; })
+        .style("stroke", function(d) { return d.group == 1 ? col1: col2; })
+        .style("stroke-width", function(d) { return d.length / reducer; });
+
 };

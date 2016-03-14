@@ -13,14 +13,16 @@
     { "group": 4, "idx": 6, "name": "Non ho l'età per amarti", "author": "Gigliola Cinguetti", "length": 139 },
     { "group": 4, "idx": 7, "name": "Please don't stop loving me", "author": "Elvis", "length": 144 },
 
-    { "group": 4, "idx": 8, "name": "He's so fine", "author": "Chiffons", "length": 0 },
-    { "group": 4, "idx": 9, "name": "My sweet Lord", "author": "Harrison", "length": 0 },
+    { "group": 5, "idx": 8, "name": "He's so fine", "author": "Chiffons", "length":344 },
+    { "group": 5, "idx": 9, "name": "My sweet Lord", "author": "Harrison", "length": 297 },
 
-    { "group": 5, "idx": 10, "name": "Will you be there", "author": "M. Jackson", "length": 134},
-    { "group": 5, "idx": 11, "name": "I cigni di balaka", "author": "Albano", "length": 158 },
+    { "group": 6, "idx": 10, "name": "Will you be there", "author": "M. Jackson", "length": 134},
+    { "group": 6, "idx": 11, "name": "I cigni di balaka", "author": "Albano", "length": 158 },
 
-    { "group": 6, "idx": 12, "name": "Love is a Wonderful Thing", "author": "Michael Bolton", "length": 314 },
-    { "group": 6, "idx": 13, "name": "Love is a Wonderful Thing", "author": "Isley Brothers", "length": 313}
+    { "group": 7, "idx": 12, "name": "Love is a Wonderful Thing", "author": "Michael Bolton", "length": 314 },
+    { "group": 7, "idx": 13, "name": "Love is a Wonderful Thing", "author": "Isley Brothers", "length": 313},
+
+{ "group": 8, "idx": 14, "name": "Via", "author": "Claudio Baglioni", "length": 256 }
 
   ],
   "links": [
@@ -30,19 +32,22 @@
     { "source": 0, "target": 1, "type": "marker", "node": 1, "start": 31, "length": 14, "group": 1 },
     { "source": 0, "target": 1, "type": "marker", "node": 0, "start": 53, "length": 12, "group": 2 },
     { "source": 0, "target": 1, "type": "marker", "node": 1, "start": 77, "length": 12, "group": 2 },
+
     { "source": 0, "target": 2 },
     { "source": 0, "target": 2, "type": "marker", "node": 0, "start": 30, "length": 7, "group": 1 },
-    { "source": 0, "target": 2, "type": "marker", "node": 2, "start": 12, "length": 7, "group": 2 },
+    { "source": 0, "target": 2, "type": "marker", "node": 2, "start": 12, "length": 7, "group": 1 },
+
     { "source": 0, "target": 4 },
     { "source": 0, "target": 4, "type": "marker", "node": 0, "start": 31, "length": 8, "group": 1 },
-    { "source": 0, "target": 4, "type": "marker", "node": 4, "start": 66, "length": 8, "group": 4 },
+    { "source": 0, "target": 4, "type": "marker", "node": 4, "start": 66, "length": 8, "group": 1 },
+
     { "source": 0, "target": 10 },
     { "source": 0, "target": 10, "type": "marker", "node": 0, "start": 135, "length": 12, "group": 1 },
-    { "source": 0, "target": 10, "type": "marker", "node": 10, "start": 118, "length": 12, "group": 4 },
+    { "source": 0, "target": 10, "type": "marker", "node": 10, "start": 118, "length": 12, "group": 1 },
 
     { "source": 0, "target": 11 },
     { "source": 0, "target": 11, "type": "marker", "node": 0, "start": 131, "length": 9, "group": 1 },
-    { "source": 0, "target": 11, "type": "marker", "node": 10, "start": 3, "length": 9, "group": 4 },
+    { "source": 0, "target": 11, "type": "marker", "node": 11, "start": 3, "length": 9, "group": 1 },
     
 
     { "source": 2, "target": 3 },
@@ -69,9 +74,12 @@
     { "source": 6, "target": 7, "type": "marker", "node": 7, "start": 31, "length": 8, "group": 2 },
     { "source": 6, "target": 7, "type": "marker", "node": 7, "start": 63, "length": 8, "group": 2 },
 
-    { "source": 9, "target": 10 },
-    { "source": 9, "target": 10, "type": "marker", "node": 0, "start": 140, "length": 9, "group": 4 },
-    { "source": 9, "target": 10, "type": "marker", "node": 10, "start": 108, "length": 9, "group": 5 },
+    { "source": 8, "target": 9 },
+    { "source": 8, "target": 9, "type": "marker", "node": 8, "start": 167, "length": 83, "group": 1 },
+    { "source": 8, "target": 9, "type": "marker", "node": 9, "start": 139, "length": 83, "group": 1 },
+{ "source": 8, "target": 9, "type": "marker", "node": 8, "start": 0, "length": 69, "group": 2 },
+    { "source": 8, "target": 9, "type": "marker", "node": 9, "start": 0, "length": 69, "group": 2 },
+
     
 
     { "source": 10, "target": 11 },

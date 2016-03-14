@@ -12,8 +12,9 @@
 
     <!-- Behaviours importing -->
     <script type="text/javascript" src="../src/behaviours/BaseGraphBehaviour.js"></script>
-    <script type="text/javascript" src="../src/behaviours/HermiteGraphBehaviour.js"></script>
+    <script type="text/javascript" src="../src/behaviours/SingleEdgeGraphBehaviour.js"></script>
     <script type="text/javascript" src="../src/behaviours/DoubleEdgeGraphBehaviour.js"></script>
+    <script type="text/javascript" src="../src/behaviours/HermiteGraphBehaviour.js"></script>
 
     <script type="text/javascript" src="../src/SimilarityGraphViz.js"></script>
 
@@ -67,7 +68,7 @@
 
             //START CONVERT
             //Convert the links in the new format.
-            graphModel.links = graphModel.links.filter(function(link) {
+            /*graphModel.links = graphModel.links.filter(function(link) {
                 return (link.type == 'marker');
             });
 
@@ -92,7 +93,7 @@
                 });
             });
 
-            graphModel.links = nlinks;
+            graphModel.links = nlinks;*/
             //END CONVERT
 
             var myGraph = null;
@@ -101,10 +102,9 @@
             //myGraph = SimilarityGraphViz(new DoubleEdgeGraphBehaviour());
 
             //myGraph = SimilarityGraphViz(new BaseGraphBehaviour());
-            //
-
+            myGraph = SimilarityGraphViz(new SingleEdgeGraphBehaviour());
             //myGraph = SimilarityGraphViz(new DoubleEdgeGraphBehaviour());
-            myGraph = SimilarityGraphViz(new HermiteGraphBehaviour());
+            //myGraph = SimilarityGraphViz(new HermiteGraphBehaviour());
 
             myGraph(graphModel);
         };//EndFunction.

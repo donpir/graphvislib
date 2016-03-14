@@ -30,20 +30,6 @@
     { "source": 0, "target": 1, "type": "marker", "node": 1, "start": 31, "length": 14, "group": 1 },
     { "source": 0, "target": 1, "type": "marker", "node": 0, "start": 53, "length": 12, "group": 2 },
     { "source": 0, "target": 1, "type": "marker", "node": 1, "start": 77, "length": 12, "group": 2 },
-    { "source": 0, "target": 2 },
-    { "source": 0, "target": 2, "type": "marker", "node": 0, "start": 30, "length": 7, "group": 1 },
-    { "source": 0, "target": 2, "type": "marker", "node": 2, "start": 12, "length": 7, "group": 2 },
-    { "source": 0, "target": 4 },
-    { "source": 0, "target": 4, "type": "marker", "node": 0, "start": 31, "length": 8, "group": 1 },
-    { "source": 0, "target": 4, "type": "marker", "node": 4, "start": 66, "length": 8, "group": 4 },
-    { "source": 0, "target": 10 },
-    { "source": 0, "target": 10, "type": "marker", "node": 0, "start": 135, "length": 12, "group": 1 },
-    { "source": 0, "target": 10, "type": "marker", "node": 10, "start": 118, "length": 12, "group": 4 },
-
-    { "source": 0, "target": 11 },
-    { "source": 0, "target": 11, "type": "marker", "node": 0, "start": 131, "length": 9, "group": 1 },
-    { "source": 0, "target": 11, "type": "marker", "node": 10, "start": 3, "length": 9, "group": 4 },
-    
 
     { "source": 2, "target": 3 },
     { "source": 2, "target": 3, "type": "marker", "node": 2, "start": 4, "length": 9, "group": 1 },
@@ -68,11 +54,6 @@
     { "source": 6, "target": 7, "type": "marker", "node": 6, "start": 68, "length": 8, "group": 2 },
     { "source": 6, "target": 7, "type": "marker", "node": 7, "start": 31, "length": 8, "group": 2 },
     { "source": 6, "target": 7, "type": "marker", "node": 7, "start": 63, "length": 8, "group": 2 },
-
-    { "source": 9, "target": 10 },
-    { "source": 9, "target": 10, "type": "marker", "node": 0, "start": 140, "length": 9, "group": 4 },
-    { "source": 9, "target": 10, "type": "marker", "node": 10, "start": 108, "length": 9, "group": 5 },
-    
 
     { "source": 10, "target": 11 },
     { "source": 10, "target": 11, "type": "marker", "node": 10, "start": 95, "length": 12, "group": 1 },

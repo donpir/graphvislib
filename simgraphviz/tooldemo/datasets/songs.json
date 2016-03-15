@@ -5,7 +5,7 @@
     { "group": 1, "idx": 1, "name": "Nelle mie notti", "author": "Sergio Endrigo", "length": 123 },
 
     { "group": 2, "idx": 2, "name": "If I could fly", "author": "Joe Satriani", "length": 133 },
-    { "group": 2, "idx": 3, "name": "Vivi la vida", "author": "Coldplay", "length": 89 },
+    { "group": 2, "idx": 3, "name": "Viva la vida", "author": "Coldplay", "length": 89 },
 
     { "group": 3, "idx": 4, "name": "Prendi questa mano zingara", "author": "Francesco De Gregori", "length": 100 },
     { "group": 3, "idx": 5, "name": "Zingara", "author": "Ivan Zanicchi", "length": 144},
@@ -22,7 +22,12 @@
     { "group": 7, "idx": 12, "name": "Love is a Wonderful Thing", "author": "Michael Bolton", "length": 314 },
     { "group": 7, "idx": 13, "name": "Love is a Wonderful Thing", "author": "Isley Brothers", "length": 313},
 
-{ "group": 8, "idx": 14, "name": "Via", "author": "Claudio Baglioni", "length": 256 }
+    { "group": 8, "idx": 14, "name": "Billie Jean", "author": "M. Jackson", "length": 257 },
+    { "group": 9, "idx": 15, "name": "Your song", "author": "Elton John", "length": 0 },
+    { "group":10, "idx": 16, "name": "Last Christmas", "author": "Wham", "length": 0 },
+    { "group":11, "idx": 17, "name": "La foule", "author": "Edith Piaf", "length": 0 },
+    { "group":12, "idx": 18, "name": "Superstition", "author": "Steve Wonder", "length": 0 },
+    { "group":13, "idx": 19, "name": "Via", "author": "Baglioni Claudio", "length": 0 }
 
   ],
   "links": [

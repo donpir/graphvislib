@@ -54,8 +54,43 @@ SingleEdgeGraphBehaviour.prototype.update = function() {
         })  .attr("y1", function(d) { return d.position.source.y; })
             .attr("x2", function(d) { return d.position.target.x; })
             .attr("y2", function(d) { return d.position.target.y; });
+
     };//EndFunction.
 
     _placeMarker(this.marker);
+
+    //this.arrow.attr("cx", function(d) {
+    //    var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, _this._radious, d.source.x, d.source.y);
+    //
+    //    var lq = new LineEquation(d.source.x, d.source.y, d.target.x, d.target.y);
+    //    var pt = lq.pointAtDist(50);
+    //    return pt.x;
+    //})
+    //    .attr("cy", function(d) {
+    //        var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, _this._radious, d.source.x, d.source.y);
+    //
+    //        var lq = new LineEquation(d.source.x, d.source.y, d.target.x, d.target.y);
+    //        var pt = lq.pointAtDist(50);
+    //        return pt.y;
+    //    }).attr("r", 5);
+
+    this.arrow.attr("points", function(d) {
+        var coord = [];
+
+        //Triangle vertex.
+        var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, _this._radious, d.source.x, d.source.y);
+        coord.push([target.x, target.y].join(","));
+
+        var lq = new LineEquation(d.target.x, d.target.y, d.source.x, d.source.y);
+        var pt = lq.pointAtDist(25);
+
+        lq.perpendicularLineIn(pt.x, pt.y);
+        var vx1 = lq.pointAtDist(5);
+        var vx2 = lq.pointAtDist(-5);
+        coord.push([vx1.x, vx1.y].join(","));
+        coord.push([vx2.x, vx2.y].join(","));
+
+        return coord.join(" ");
+    });
 
 };

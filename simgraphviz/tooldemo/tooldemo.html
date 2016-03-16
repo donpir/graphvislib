@@ -45,6 +45,11 @@
             font-size: 8px;
         }
 
+        .arrow {
+            fill: #999;
+            fill-opacity: 1;
+        }
+
     </style>
 </head>
 <body>
@@ -68,7 +73,7 @@
 
             //START CONVERT
             //Convert the links in the new format.
-            graphModel.links = graphModel.links.filter(function(link) {
+            /*graphModel.links = graphModel.links.filter(function(link) {
                 return (link.type == 'marker');
             });
 
@@ -93,7 +98,7 @@
                 });
             });
 
-            graphModel.links = nlinks;
+            graphModel.links = nlinks;*/
             //END CONVERT
 
             var myGraph = null;
@@ -102,9 +107,9 @@
             //myGraph = SimilarityGraphViz(new DoubleEdgeGraphBehaviour());
 
             //myGraph = SimilarityGraphViz(new BaseGraphBehaviour());
-            //myGraph = SimilarityGraphViz(new SingleEdgeGraphBehaviour());
+            myGraph = SimilarityGraphViz(new SingleEdgeGraphBehaviour());
             //myGraph = SimilarityGraphViz(new DoubleEdgeGraphBehaviour());
-            myGraph = SimilarityGraphViz(new HermiteGraphBehaviour());
+            //myGraph = SimilarityGraphViz(new HermiteGraphBehaviour());
 
             myGraph(graphModel);
         };//EndFunction.

@@ -93,8 +93,14 @@ LineEquation.prototype = (function() {
         },//EndFunction.
 
         perpendicularLineIn: function (pivotX, pivotY) {
-            if (typeof pivotX == 'undefined')
-                pivotX = this.pt0.x, pivotY = this.pt0.y;
+            if (typeof pivotX == 'undefined' || typeof pivotY == 'undefined') {
+                return;
+                //pivotX = this.pt0.x;
+                //pivotY = this.pt0.y;
+            }
+
+            this.pt0.x = pivotX;
+            this.pt0.y = pivotY;
 
             //Check weather the point is on the line.
             /*var isValidPoint = this.check(pivotX, pivotY);

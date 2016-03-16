@@ -68,6 +68,11 @@ DoubleEdgeGraphBehaviour.prototype.init = function (svg, jsonGraph, force) {
         .filter(function (d) { return (typeof d.type == 'undefined'); })
         .attr("class", "linkup");
 
+    this.arrow = this.linkShapes
+        .append("polygon")
+        .filter(function (d) { return (typeof d.type == 'undefined' && d.directed == true)})
+        .attr("class", "arrow");
+
     this.linkdown = this.linkShapes
         .append("line")
         .filter(function (d) { return (typeof d.type == 'undefined'); })
@@ -136,5 +141,25 @@ DoubleEdgeGraphBehaviour.prototype.update = function() {
     this.markerdown.each(function (lnk) { move(lnk, 2); });
     _placeMarker(this.markerup, this._radious);
     _placeMarker(this.markerdown, this._radious);
+
+
+    this.arrow.attr("points", function(d) {
+        var coord = [];
+
+        //Triangle vertex.
+        var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, _this._radious, d.source.x, d.source.y);
+        coord.push([target.x, target.y].join(","));
+
+        var lq = new LineEquation(d.target.x, d.target.y, d.source.x, d.source.y);
+        var pt = lq.pointAtDist(25);
+
+        lq.perpendicularLineIn(pt.x, pt.y);
+        var vx1 = lq.pointAtDist(7);
+        var vx2 = lq.pointAtDist(-7);
+        coord.push([vx1.x, vx1.y].join(","));
+        coord.push([vx2.x, vx2.y].join(","));
+
+        return coord.join(" ");
+    });
 
 };

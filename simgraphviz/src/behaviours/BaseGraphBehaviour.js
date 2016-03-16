@@ -29,6 +29,12 @@ BaseGraphBehaviour.prototype = (function() {
                 .filter(function (d) { return (typeof d.type == 'undefined'); })
                 .attr("class", "link");
 
+            this.arrow = this.linkShapes
+                .append("polygon")
+                //.append("circle")
+                .filter(function (d) { return (typeof d.type == 'undefined' && d.directed == true)})
+                .attr("class", "arrow");
+
             //NODES.
             this.nodeShapes = this._svg.selectAll(".nodeShapes")
                 .data(jsonGraph.nodes)

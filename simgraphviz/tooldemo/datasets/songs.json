@@ -22,56 +22,52 @@
     { "group": 7, "idx": 12, "name": "Love is a Wonderful Thing", "author": "Michael Bolton", "length": 314 },
     { "group": 7, "idx": 13, "name": "Love is a Wonderful Thing", "author": "Isley Brothers", "length": 313},
 
-    { "group": 8, "idx": 14, "name": "Billie Jean", "author": "M. Jackson", "length": 257 },
-    { "group": 9, "idx": 15, "name": "Your song", "author": "Elton John", "length": 0 },
-    { "group":10, "idx": 16, "name": "Last Christmas", "author": "Wham", "length": 0 },
-    { "group":11, "idx": 17, "name": "La foule", "author": "Edith Piaf", "length": 0 },
-    { "group":12, "idx": 18, "name": "Superstition", "author": "Steve Wonder", "length": 0 },
-    { "group":13, "idx": 19, "name": "Via", "author": "Baglioni Claudio", "length": 0 }
+    { "group":10, "idx": 16, "name": "Last Christmas", "author": "Wham", "length": 238 },
+    { "group":11, "idx": 17, "name": "La foule", "author": "Edith Piaf", "length": 355 }
 
   ],
   "links": [
 
-    { "source": 0, "target": 1 },
+    { "source": 0, "target": 1, "directed": true },
     { "source": 0, "target": 1, "type": "marker", "node": 0, "start": 24, "length": 14, "group": 1 },
     { "source": 0, "target": 1, "type": "marker", "node": 1, "start": 31, "length": 14, "group": 1 },
     { "source": 0, "target": 1, "type": "marker", "node": 0, "start": 53, "length": 12, "group": 2 },
     { "source": 0, "target": 1, "type": "marker", "node": 1, "start": 77, "length": 12, "group": 2 },
 
-    { "source": 0, "target": 2 },
+    { "source": 0, "target": 2, "directed": false },
     { "source": 0, "target": 2, "type": "marker", "node": 0, "start": 30, "length": 7, "group": 1 },
     { "source": 0, "target": 2, "type": "marker", "node": 2, "start": 12, "length": 7, "group": 1 },
 
-    { "source": 0, "target": 4 },
+    { "source": 0, "target": 4, "directed": false },
     { "source": 0, "target": 4, "type": "marker", "node": 0, "start": 31, "length": 8, "group": 1 },
     { "source": 0, "target": 4, "type": "marker", "node": 4, "start": 66, "length": 8, "group": 1 },
 
-    { "source": 0, "target": 10 },
+    { "source": 0, "target": 10, "directed": false },
     { "source": 0, "target": 10, "type": "marker", "node": 0, "start": 135, "length": 12, "group": 1 },
     { "source": 0, "target": 10, "type": "marker", "node": 10, "start": 118, "length": 12, "group": 1 },
 
-    { "source": 0, "target": 11 },
+    { "source": 0, "target": 11, "directed": false },
     { "source": 0, "target": 11, "type": "marker", "node": 0, "start": 131, "length": 9, "group": 1 },
     { "source": 0, "target": 11, "type": "marker", "node": 11, "start": 3, "length": 9, "group": 1 },
     
 
-    { "source": 2, "target": 3 },
-    { "source": 2, "target": 3, "type": "marker", "node": 2, "start": 4, "length": 9, "group": 1 },
-    { "source": 2, "target": 3, "type": "marker", "node": 2, "start": 44, "length": 9, "group": 1 },
-    { "source": 2, "target": 3, "type": "marker", "node": 2, "start": 79, "length": 9, "group": 1 },
-    { "source": 2, "target": 3, "type": "marker", "node": 2, "start": 119, "length": 9, "group": 1 },
-    { "source": 2, "target": 3, "type": "marker", "node": 3, "start": 22, "length": 9, "group": 1 },
-    { "source": 2, "target": 3, "type": "marker", "node": 2, "start": 27, "length": 7, "group": 2 },
-    { "source": 2, "target": 3, "type": "marker", "node": 2, "start": 102, "length": 7, "group": 2 },
-    { "source": 2, "target": 3, "type": "marker", "node": 3, "start": 71, "length": 7, "group": 2 },
+    { "source": 3, "target": 2, "directed": true },
+    { "source": 3, "target": 2, "type": "marker", "node": 2, "start": 4, "length": 9, "group": 1 },
+    { "source": 3, "target": 2, "type": "marker", "node": 2, "start": 44, "length": 9, "group": 1 },
+    { "source": 3, "target": 2, "type": "marker", "node": 2, "start": 79, "length": 9, "group": 1 },
+    { "source": 3, "target": 2, "type": "marker", "node": 2, "start": 119, "length": 9, "group": 1 },
+    { "source": 3, "target": 2, "type": "marker", "node": 3, "start": 22, "length": 9, "group": 1 },
+    { "source": 3, "target": 2, "type": "marker", "node": 2, "start": 27, "length": 7, "group": 2 },
+    { "source": 3, "target": 2, "type": "marker", "node": 2, "start": 102, "length": 7, "group": 2 },
+    { "source": 3, "target": 2, "type": "marker", "node": 3, "start": 71, "length": 7, "group": 2 },
 
-    { "source": 4, "target": 5 },
+    { "source": 4, "target": 5, "directed": true },
     { "source": 4, "target": 5, "type": "marker", "node": 4, "start": 31, "length": 13, "group": 1 },
     { "source": 4, "target": 5, "type": "marker", "node": 5, "start": 122, "length": 13, "group": 1 },
     { "source": 4, "target": 5, "type": "marker", "node": 4, "start": 63, "length": 10, "group": 2 },
     { "source": 4, "target": 5, "type": "marker", "node": 5, "start": 23, "length": 10, "group": 2 },
 
-    { "source": 6, "target": 7 },
+    { "source": 6, "target": 7, "directed": true },
     { "source": 6, "target": 7, "type": "marker", "node": 6, "start": 126, "length": 13, "group": 1 },
     { "source": 6, "target": 7, "type": "marker", "node": 7, "start": 127, "length": 13, "group": 1 },
     { "source": 6, "target": 7, "type": "marker", "node": 6, "start": 1, "length": 8, "group": 2 },
@@ -79,17 +75,15 @@
     { "source": 6, "target": 7, "type": "marker", "node": 7, "start": 31, "length": 8, "group": 2 },
     { "source": 6, "target": 7, "type": "marker", "node": 7, "start": 63, "length": 8, "group": 2 },
 
-    { "source": 8, "target": 9 },
-    { "source": 8, "target": 9, "type": "marker", "node": 8, "start": 167, "length": 83, "group": 1 },
-    { "source": 8, "target": 9, "type": "marker", "node": 9, "start": 139, "length": 83, "group": 1 },
-{ "source": 8, "target": 9, "type": "marker", "node": 8, "start": 0, "length": 69, "group": 2 },
-    { "source": 8, "target": 9, "type": "marker", "node": 9, "start": 0, "length": 69, "group": 2 },
+    { "source": 9, "target": 8, "directed": true },
+    { "source": 9, "target": 8, "type": "marker", "node": 8, "start": 167, "length": 83, "group": 1 },
+    { "source": 9, "target": 8, "type": "marker", "node": 9, "start": 139, "length": 83, "group": 1 },
+    { "source": 9, "target": 8, "type": "marker", "node": 8, "start": 0, "length": 69, "group": 2 },
+    { "source": 9, "target": 8, "type": "marker", "node": 9, "start": 0, "length": 69, "group": 2 },
 
-    
-
-    { "source": 10, "target": 11 },
-    { "source": 10, "target": 11, "type": "marker", "node": 10, "start": 95, "length": 12, "group": 1 },
-    { "source": 10, "target": 11, "type": "marker", "node": 11, "start": 64, "length": 12, "group": 1 },
+    { "source": 11, "target": 10, "directed": true },
+    { "source": 11, "target": 10, "type": "marker", "node": 10, "start": 95, "length": 12, "group": 1 },
+    { "source": 11, "target": 10, "type": "marker", "node": 11, "start": 64, "length": 12, "group": 1 },
 
     { "source": 10, "target": 11, "type": "marker", "node": 10, "start": 20, "length": 8, "group": 2 },
     { "source": 10, "target": 11, "type": "marker", "node": 10, "start": 73, "length": 8, "group": 2 },
@@ -97,7 +91,7 @@
     { "source": 10, "target": 11, "type": "marker", "node": 11, "start": 19, "length": 8, "group": 2 },
     { "source": 10, "target": 11, "type": "marker", "node": 11, "start": 101, "length": 8, "group": 2 },
 
-    { "source": 12, "target": 13 },
+    { "source": 12, "target": 13, "directed": true },
     { "source": 12, "target": 13, "type": "marker", "node": 12, "start": 159, "length": 22, "group": 1 },
     { "source": 12, "target": 13, "type": "marker", "node": 13, "start": 236, "length": 22, "group": 1 },
     { "source": 12, "target": 13, "type": "marker", "node": 12, "start": 3, "length": 17, "group": 2 },

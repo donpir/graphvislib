@@ -83,7 +83,7 @@
                 if (!bFilter) return;
 
                 graphModel.links.forEach(function(_link){
-                    var bFilter = (_link.node == link.target && _link.group == link.group);
+                    var bFilter = (_link.source == link.source && _link.node == link.target && _link.group == link.group);
                     if (!bFilter) return;
 
                     var newLink = {};

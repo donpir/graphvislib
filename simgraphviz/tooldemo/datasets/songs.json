@@ -22,8 +22,8 @@
     { "group": 7, "idx": 12, "name": "Love is a Wonderful Thing", "author": "Michael Bolton", "length": 314 },
     { "group": 7, "idx": 13, "name": "Love is a Wonderful Thing", "author": "Isley Brothers", "length": 313},
 
-    { "group":10, "idx": 16, "name": "Last Christmas", "author": "Wham", "length": 238 },
-    { "group":11, "idx": 17, "name": "La foule", "author": "Edith Piaf", "length": 355 }
+    { "group": 8, "idx": 14, "name": "Superstition", "author": "Steve Wonder", "length": 321 },
+    { "group": 9, "idx": 15, "name": "Via", "author": "Baglioni Claudio", "length": 316 }
 
   ],
   "links": [

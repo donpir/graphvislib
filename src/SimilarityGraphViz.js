@@ -23,8 +23,9 @@ function SimilarityGraphViz(behaviour) {
     /**
      * Generate the visualization using 'width' and 'height'.
      */
-    function build(jsonGraph) {
-        _svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+    function build(jsonGraph, svg) {
+        //_svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+        _svg = svg;
 
         var color = d3.scale.category20();
 
@@ -66,7 +67,6 @@ function SimilarityGraphViz(behaviour) {
             _behaviour.update();
         });
 
-        debugger;
         return build;
     }//EndFunction.
 

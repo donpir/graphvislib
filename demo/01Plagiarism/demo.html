@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Similarity Graph Viz</title>
 
+	<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/print.css" media="print">
+	
     <script type="text/javascript" src="d3.min.js"></script>
     <script type="text/javascript" src="GeomMathUtils.js"></script>
 
@@ -47,7 +52,7 @@
             fill-opacity: 1;
         }
 
-        section {
+        section.viz {
             width: 720px;
             height: 500px;
             background: #CFD8DC;
@@ -70,40 +75,52 @@
 </head>
 <body>
 
-    <h1>Plagiarism Visualisation</h1>
+    <div id="container">
+      <div class="inner">
 
-    <p>
-        The aim of this page is to present three visualisations to represent plagiarism among songs.
+        <header>
+          <h1>Plagiarism Visualisation</h1>
+		  <hr>
+          <p>
+				The aim of this page is to present three visualisations to represent plagiarism among songs.
+				
+				Our aim is to search for an intuitive visualisation to easily identify plagiarism with a dataset of artifacts
+				(e.g., songs, text, etc.).
+
+				The following are three visualisations, which use specially prepared dataset of songs.
+				They have been test with end-users.
+			</p>
+        </header>
+
+		<hr>
+
+        <section id="main_content">
 		
-        Our aim is to search for an intuitive visualisation to easily identify plagiarism with a dataset of artifacts
-        (e.g., songs, text, etc.).
+			<h2>Visualisation </h2>
+			<p>This visualisation represents every song as a </p>
+			<section class="viz">
+				<div id="placeholderViz2" class="left"> </div>
+			</section>
 
-        The following are three visualisations, which use specially prepared dataset of songs.
-        They have been test with end-users.
-    </p>
+			<h2>Visualisation</h2>
+			<p>This visualisation represents every song as a </p>
+			<section class="viz">
+				<div id="placeholderViz3" class="left"> </div>
+			</section>
 
-
-    <h2>Visualisation </h2>
-    <p>This visualisation represents every song as a </p>
-    <section>
-        <div id="placeholderViz2" class="left"> </div>
-    </section>
-
-    <h2>Visualisation</h2>
-    <p>This visualisation represents every song as a </p>
-    <section>
-        <div id="placeholderViz3" class="left"> </div>
-    </section>
-
-    <h2>Visualisation</h2>
-    <p>
-        This visualisation represents every song with a rectangle, which height is proportional to the song
-        length. Lines among nodes
-    </p>
-    <section>
-        <div id="placeholderViz1" class="left"> </div>
-    </section>
-
+			<h2>Visualisation</h2>
+			<p>
+				This visualisation represents every song with a rectangle, which height is proportional to the song
+				length. Lines among nodes
+			</p>
+			<section class="viz">
+				<div id="placeholderViz1" class="left"> </div>
+			</section>
+			
+		</section>
+		
+	</div>
+    </div>
 
     <script type="text/javascript">
         var httpGetAsync = function(theUrl, callback) {

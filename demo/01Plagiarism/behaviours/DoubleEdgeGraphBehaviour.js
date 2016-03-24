@@ -9,8 +9,8 @@ var  _proportion = function (subSegmentStart, subSegmentLength, segmentLength) {
 var _placeMarker = function (marker, _radius) {
     var compute = function(d) {
 
-        var source = GeomMathUtils.IntersectCircumferenceSegment(d.position.source.x, d.position.source.y, _radius, d.position.target.x, d.position.target.y);
-        var target = GeomMathUtils.IntersectCircumferenceSegment(d.position.target.x, d.position.target.y, _radius, d.position.source.x, d.position.source.y);
+        var source = GeomMathUtils.IntersectCircumferenceSegment(d.position.source.x, d.position.source.y, d.source.radious, d.position.target.x, d.position.target.y);
+        var target = GeomMathUtils.IntersectCircumferenceSegment(d.position.target.x, d.position.target.y, d.target.radious, d.position.source.x, d.position.source.y);
 
         var lineEq = new LineEquation(source.x, source.y, target.x, target.y);
         var linkLength = LineEquation.CalculateSegmentLength(source.x, source.y, target.x, target.y);
@@ -95,7 +95,10 @@ DoubleEdgeGraphBehaviour.prototype.init = function (svg, jsonGraph, force) {
 
     this.node = this.nodeShapes.append("circle")
         .attr("class", "node")
-        .attr("r", this._radious)
+        .attr("r", function(d) {
+            d.radious = d.length * 0.06;
+            return d.radious;
+        })
         .style("fill", function(d) { return _this.colour(d.group); })
         .call(this._force.drag);
 
@@ -115,8 +118,8 @@ DoubleEdgeGraphBehaviour.prototype.update = function() {
     });
 
     //It places the nodes labels.
-    this.title.attr("x", function(d) { return d.x - _this._radious; })
-        .attr("y", function(d) { return d.y - _this._radious; });
+    this.title.attr("x", function(d) { return d.x - d.radious; })
+        .attr("y", function(d) { return d.y - d.radious; });
 
     //It places the links.
     var move = function(lnk, dist) {
@@ -146,16 +149,21 @@ DoubleEdgeGraphBehaviour.prototype.update = function() {
     this.arrow.attr("points", function(d) {
         var coord = [];
 
+        var lq = new LineEquation(d.target.x, d.target.y, d.source.x, d.source.y);
+
         //Triangle vertex.
-        var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, _this._radious, d.source.x, d.source.y);
+        //var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, d.target.radious, d.source.x, d.source.y);
+        //coord.push([target.x, target.y].join(","));
+
+        var segmentLength = lq.calculateLength();
+        var target = lq.pointAtDist(d.target.radious);
         coord.push([target.x, target.y].join(","));
 
-        var lq = new LineEquation(d.target.x, d.target.y, d.source.x, d.source.y);
-        var pt = lq.pointAtDist(25);
+        var pt = lq.pointAtDist(5 + d.target.radious);
 
         lq.perpendicularLineIn(pt.x, pt.y);
-        var vx1 = lq.pointAtDist(7);
-        var vx2 = lq.pointAtDist(-7);
+        var vx1 = lq.pointAtDist(5);
+        var vx2 = lq.pointAtDist(-5);
         coord.push([vx1.x, vx1.y].join(","));
         coord.push([vx2.x, vx2.y].join(","));
 

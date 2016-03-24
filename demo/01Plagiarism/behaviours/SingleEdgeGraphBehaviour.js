@@ -26,9 +26,9 @@ SingleEdgeGraphBehaviour.prototype.update = function() {
     var _placeMarker = function (marker) {
         var compute = function(d) {
 
-            var source = GeomMathUtils.IntersectCircumferenceSegment(d.source.x, d.source.y, _this._radious, d.target.x, d.target.y);
-            var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, _this._radious, d.source.x, d.source.y);
-
+            var source = GeomMathUtils.IntersectCircumferenceSegment(d.source.x, d.source.y, d.source.radious, d.target.x, d.target.y);
+            var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, d.target.radious, d.source.x, d.source.y);
+            //debugger;
             var lineEq = new LineEquation(source.x, source.y, target.x, target.y);
             var linkLength = LineEquation.CalculateSegmentLength(source.x, source.y, target.x, target.y);
 
@@ -59,30 +59,20 @@ SingleEdgeGraphBehaviour.prototype.update = function() {
 
     _placeMarker(this.marker);
 
-    //this.arrow.attr("cx", function(d) {
-    //    var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, _this._radious, d.source.x, d.source.y);
-    //
-    //    var lq = new LineEquation(d.source.x, d.source.y, d.target.x, d.target.y);
-    //    var pt = lq.pointAtDist(50);
-    //    return pt.x;
-    //})
-    //    .attr("cy", function(d) {
-    //        var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, _this._radious, d.source.x, d.source.y);
-    //
-    //        var lq = new LineEquation(d.source.x, d.source.y, d.target.x, d.target.y);
-    //        var pt = lq.pointAtDist(50);
-    //        return pt.y;
-    //    }).attr("r", 5);
-
     this.arrow.attr("points", function(d) {
         var coord = [];
 
+        var lq = new LineEquation(d.target.x, d.target.y, d.source.x, d.source.y);
+
         //Triangle vertex.
-        var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, _this._radious, d.source.x, d.source.y);
+        //var target = GeomMathUtils.IntersectCircumferenceSegment(d.target.x, d.target.y, d.target.radious, d.source.x, d.source.y);
+        //coord.push([target.x, target.y].join(","));
+
+        var segmentLength = lq.calculateLength();
+        var target = lq.pointAtDist(d.target.radious);
         coord.push([target.x, target.y].join(","));
 
-        var lq = new LineEquation(d.target.x, d.target.y, d.source.x, d.source.y);
-        var pt = lq.pointAtDist(25);
+        var pt = lq.pointAtDist(5 + d.target.radious);
 
         lq.perpendicularLineIn(pt.x, pt.y);
         var vx1 = lq.pointAtDist(5);

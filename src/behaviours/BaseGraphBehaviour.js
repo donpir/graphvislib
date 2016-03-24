@@ -16,7 +16,7 @@ BaseGraphBehaviour.prototype = (function() {
             this._svg = svg;
             this._jsonGraph = jsonGraph;
             this._force = force;
-            this._radious = 20;
+            //this._radious = 20;
             this.colour = d3.scale.category20();
             var _this = this;
 
@@ -42,7 +42,6 @@ BaseGraphBehaviour.prototype = (function() {
 
             this.node = this.nodeShapes.append("circle")
                 .attr("class", "node")
-                .attr("r", this._radious)
                 .style("fill", function(d) { return _this.colour(d.group); })
                 .call(this._force.drag);
 
@@ -59,11 +58,14 @@ BaseGraphBehaviour.prototype = (function() {
                 return d.x;
             }).attr("cy", function (d) {
                 return d.y;
+            }).attr("r", function(d) {
+                d.radious = d.length * 0.05;
+                return d.radious;
             });
 
             //It places the nodes labels.
-            this.title.attr("x", function(d) { return d.x - _this._radious; })
-                .attr("y", function(d) { return d.y - _this._radious; });
+            this.title.attr("x", function(d) { return d.x - d.radious; })
+                .attr("y", function(d) { return d.y - d.radious; });
 
             //It places the edges.
             BaseGraphBehaviour.PlaceEdges(this.link);

@@ -81,9 +81,9 @@
     { "source": 9, "target": 8, "type": "marker", "node": 8, "start": 0, "length": 69, "group": 2 },
     { "source": 9, "target": 8, "type": "marker", "node": 9, "start": 0, "length": 69, "group": 2 },
 
-    { "source": 11, "target": 10, "directed": true },
-    { "source": 11, "target": 10, "type": "marker", "node": 10, "start": 95, "length": 12, "group": 1 },
-    { "source": 11, "target": 10, "type": "marker", "node": 11, "start": 64, "length": 12, "group": 1 },
+    { "source": 10, "target": 11, "directed": true },
+    { "source": 10, "target": 11, "type": "marker", "node": 10, "start": 95, "length": 12, "group": 1 },
+    { "source": 10, "target": 11, "type": "marker", "node": 11, "start": 64, "length": 12, "group": 1 },
 
     { "source": 10, "target": 11, "type": "marker", "node": 10, "start": 20, "length": 8, "group": 2 },
     { "source": 10, "target": 11, "type": "marker", "node": 10, "start": 73, "length": 8, "group": 2 },

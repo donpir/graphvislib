@@ -59,6 +59,11 @@
             margin: auto;
             padding: 1px;
         }
+		
+		section > p {
+			width: 720px;
+		}
+		
         div.left {
             width: 100%;
             height: 500px;
@@ -98,37 +103,40 @@
 				The following are three visualisations, which use specially prepared dataset of songs.
 				They have been test with end-users.
 			</p>
+			<p style="font-size: .8em;">
+			Note: This page is compatible with the following browsers: Chrome (version >= 49), Firefox (version >= 44), Safari and Opera (version >= 36).
+			</p>
+			<hr>
         </header>
-
-		<hr>
-
+		
         <section id="main_content">
 		
-			<h2>Visualisation </h2>
-			<p>This visualisation represents every song as a </p>
+			<h2>Visualisation (Viz2)</h2>
 			<section class="viz">
 				<div id="placeholderViz2" class="left"> </div>
 			</section>
+			<p style="text-align: justify; text-justify: inter-word;">This visualisation represents every song is represented as a circle, whose circumference is proportional to the song’s length here defined as the number of notes within the song. The edge connecting two circles identifies common sequences of notes (n-grams). If two songs represent a plagiarism case, then: (a) common fragments on the edge will be marked with a red color; (b) nodes (circles) will be colored with the same color; (c) an arrow will be added from the circle of who is guilty of plagiarism to the circle of the copied song. </p>
 
-			<h2>Visualisation</h2>
-			<p>This visualisation represents every song as a </p>
+			<h2>Visualisation (Viz 3)</h2>
 			<section class="viz">
 				<div id="placeholderViz3" class="left"> </div>
 			</section>
+			<p style="text-align: justify; text-justify: inter-word;">This visualisation represents every song is represented as a circle, whose circumference is proportional to the song’s length here defined as the number of notes within the song. We use two edges (one per song) for connecting two circles whether there are common sequences of notes (n-grams). If two songs represent a plagiarism case, then: (a) common fragments on the edge will be marked with the same color; (b) nodes (circles) will be colored with the same color; (c) an arrow will be added from the circle of who is guilty of plagiarism to the circle of the copied song.</p>
 
-			<h2>Visualisation</h2>
-			<p>
-				This visualisation represents every song with a rectangle, which height is proportional to the song
-				length. Lines among nodes
-			</p>
+			<h2>Visualisation (Viz 1)</h2>
 			<section class="viz">
 				<div id="placeholderViz1" class="left"> </div>
 			</section>
+			<p style="text-align: justify; text-justify: inter-word;">This visualisation represents  every song is represented as a rectangle, whose height is proportional to the song’s length here defined as the number of notes within the song. The line connecting two rectangles identifies common sequences of notes (n-grams). The extremities of the lines identify, respectively, the points of the song in which the common n-grams are placed. The line thickness is proportional to the dimension of n-grams. If two songs represent a plagiarism case, the same color will be used for the corresponding rectangles.
+			</p>
 			
 			<h2>Evaluation study</h2>
 			
+			<p>
 			The three visualisations have been evaluated with 36 participants who performed tasks in random order.
-			The questionnaire is available <a href="Questionnaire.pdf">here</a>. 
+			The questionnaire is available <a target="_blank" href="Questionnaire.pdf">here</a>. 
+			The tasks performed are available <a target="_blank" href="Tasks.pdf">here</a> in paper format. These tasks during the evaluation phase have been presented in random order using the open source framework available <a target="_blank" href="https://github.com/donpir/viztestrunner">VizTestRunner</a>.
+			</p>
 		</section>
 		
 	</div>

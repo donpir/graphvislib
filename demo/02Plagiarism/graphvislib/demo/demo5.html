@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Similarity Graph Viz</title>
+
+    <script type="text/javascript" src="../bower_components/d3/d3.min.js"></script>
+    <script type="text/javascript" src="../src/GeomMathUtils.js"></script>
+
+
+    <!-- Behaviours importing -->
+    <script type="text/javascript" src="../src/behaviours/BaseGraphBehaviour.js"></script>
+    <script type="text/javascript" src="../src/behaviours/SingleEdgeGraphBehaviour.js"></script>
+    <script type="text/javascript" src="../src/behaviours/DoubleEdgeGraphBehaviour.js"></script>
+    <script type="text/javascript" src="../src/behaviours/HermiteGraphBehaviour.js"></script>
+
+    <script type="text/javascript" src="../src/SimilarityGraphViz.js"></script>
+
+    <style>
+
+        .node {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .link, .linkup, .linkdown {
+            stroke: #999;
+            stroke-opacity: .6;
+            stroke-width: 2px;
+        }
+
+        .linkMarker, .linkMarkerUp, .linkMarkerDown {
+            stroke: red;
+            stroke-width: 3px;
+        }
+
+        .linkMarkerDown {
+            stroke: blue;
+            stroke-width: 3px;
+        }
+
+        .nodeTitle {
+            font-size: 8px;
+        }
+
+        .arrow {
+            fill: #999;
+            fill-opacity: 1;
+        }
+
+        section {
+            width: 720px;
+            height: 500px;
+            background: #CFD8DC;
+            margin: auto;
+            padding: 1px;
+        }
+        div.left {
+            width: 100%;
+            height: 500px;
+            background: #FAFAFA;
+            float: left;
+        }
+        div.right {
+            margin-left: 25px;
+            height: 500px;
+            background: #B3E5FC;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Plagiarism Visualisation</h1>
+
+    <p>
+        The aim of this page is to present three visualisations to represent plagiarism among songs.
+        Our aim is to search for an intuitive visualisation to easily identify plagiarism with a dataset of artifacts
+        (e.g., songs, text, etc.).
+
+        The following are three visualisations, which use specially prepared dataset of songs.
+        They have been test with end-users.
+    </p>
+
+
+    <h2>Visualisation </h2>
+    <p>This visualisation represents every song as a </p>
+    <section>
+        <div id="placeholderViz2" class="left"> </div>
+    </section>
+
+    <h2>Visualisation</h2>
+    <p>This visualisation represents every song as a </p>
+    <section>
+        <div id="placeholderViz3" class="left"> </div>
+    </section>
+
+    <h2>Visualisation</h2>
+    <p>
+        This visualisation represents every song with a rectangle, which height is proportional to the song
+        length. Lines among nodes
+    </p>
+    <section>
+        <div id="placeholderViz1" class="left"> </div>
+    </section>
+
+
+    <script type="text/javascript">
+        var httpGetAsync = function(theUrl, callback) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200)
+                    callback(xhttp.responseText);
+            };
+            xhttp.open("GET", theUrl, true); // true for asynchronous
+            xhttp.send(null);
+        };//EndFunction.
+
+        httpGetAsync("songs.json", loadGraphViz1);
+
+        function loadGraphViz1(sGraphModel) {
+            var graphModel = JSON.parse(sGraphModel);
+            //START CONVERT
+            //Convert the links in the new format.
+            graphModel.links = graphModel.links.filter(function(link) {
+                return (link.type == 'marker');
+            });
+
+            var nlinks = [];
+            graphModel.links.forEach(function(link) {
+                var bFilter = (link.node == link.source);
+                if (!bFilter) return;
+
+                graphModel.links.forEach(function(_link){
+                var bFilter = (_link.source == link.source && _link.node == link.target && _link.group == link.group);
+                if (!bFilter) return;
+
+                var newLink = {};
+                newLink.source = link.source;
+                newLink.target = link.target;
+                newLink.sourceStart = link.start;
+                newLink.length = link.length;
+                newLink.targetStart = _link.start;
+                newLink.group = link.group;
+
+                nlinks.push(newLink);
+                });
+            });
+
+             graphModel.links = nlinks;
+            //END CONVERT
+
+            var svg = d3.select("#placeholderViz1").append("svg").attr("width", 720).attr("height", 500);
+            var myGraph = SimilarityGraphViz(new HermiteGraphBehaviour());
+
+            myGraph(graphModel, svg);
+            var rects = d3.selectAll("rect").style("fill", "rgb(174, 199, 232)");
+
+            
+        }//EndFunction.
+
+        ////////////////////////////////////////////////
+        /// VISUALISATION 2
+        ///
+
+        httpGetAsync("songs.json", loadGraphViz2);
+
+        function loadGraphViz2(sGraphModel) {
+            var graphModel = JSON.parse(sGraphModel);
+            var svg = d3.select("#placeholderViz2").append("svg").attr("width", 720).attr("height", 500);
+            var myGraph = SimilarityGraphViz(new SingleEdgeGraphBehaviour());
+            myGraph(graphModel, svg);
+        };//EndFunction.
+
+        ////////////////////////////////////////////////
+        /// VISUALISATION 3
+        ///
+
+        httpGetAsync("songs.json", loadGraphViz3);
+
+        function loadGraphViz3(sGraphModel) {
+            var graphModel = JSON.parse(sGraphModel);
+            var svg = d3.select("#placeholderViz3").append("svg").attr("width", 720).attr("height", 500);
+            var myGraph = SimilarityGraphViz(new DoubleEdgeGraphBehaviour());
+            myGraph(graphModel, svg);
+            var circles = d3.selectAll("circle").style("fill", "rgb(174, 199, 232)");
+            
+        };//EndFunction.
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

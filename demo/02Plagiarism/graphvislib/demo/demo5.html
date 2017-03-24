@@ -12,7 +12,7 @@
     <script type="text/javascript" src="../src/behaviours/BaseGraphBehaviour.js"></script>
     <script type="text/javascript" src="../src/behaviours/SingleEdgeGraphBehaviour.js"></script>
     <script type="text/javascript" src="../src/behaviours/DoubleEdgeGraphBehaviour.js"></script>
-    <script type="text/javascript" src="../src/behaviours/HermiteGraphBehaviour.js"></script>
+    <!--<script type="text/javascript" src="../src/behaviours/HermiteGraphBehaviour.js"></script>-->
 
     <script type="text/javascript" src="../src/SimilarityGraphViz.js"></script>
 
@@ -71,37 +71,8 @@
 </head>
 <body>
 
-    <h1>Plagiarism Visualisation</h1>
-
-    <p>
-        The aim of this page is to present three visualisations to represent plagiarism among songs.
-        Our aim is to search for an intuitive visualisation to easily identify plagiarism with a dataset of artifacts
-        (e.g., songs, text, etc.).
-
-        The following are three visualisations, which use specially prepared dataset of songs.
-        They have been test with end-users.
-    </p>
-
-
-    <h2>Visualisation </h2>
-    <p>This visualisation represents every song as a </p>
     <section>
         <div id="placeholderViz2" class="left"> </div>
-    </section>
-
-    <h2>Visualisation</h2>
-    <p>This visualisation represents every song as a </p>
-    <section>
-        <div id="placeholderViz3" class="left"> </div>
-    </section>
-
-    <h2>Visualisation</h2>
-    <p>
-        This visualisation represents every song with a rectangle, which height is proportional to the song
-        length. Lines among nodes
-    </p>
-    <section>
-        <div id="placeholderViz1" class="left"> </div>
     </section>
 
 
@@ -116,7 +87,7 @@
             xhttp.send(null);
         };//EndFunction.
 
-        httpGetAsync("songs.json", loadGraphViz1);
+        /*httpGetAsync("songs.json", loadGraphViz1);
 
         function loadGraphViz1(sGraphModel) {
             var graphModel = JSON.parse(sGraphModel);
@@ -157,7 +128,7 @@
             var rects = d3.selectAll("rect").style("fill", "rgb(174, 199, 232)");
 
             
-        }//EndFunction.
+        }//EndFunction.*/
 
         ////////////////////////////////////////////////
         /// VISUALISATION 2
@@ -176,7 +147,7 @@
         /// VISUALISATION 3
         ///
 
-        httpGetAsync("songs.json", loadGraphViz3);
+        /*httpGetAsync("songs.json", loadGraphViz3);
 
         function loadGraphViz3(sGraphModel) {
             var graphModel = JSON.parse(sGraphModel);
@@ -185,7 +156,7 @@
             myGraph(graphModel, svg);
             var circles = d3.selectAll("circle").style("fill", "rgb(174, 199, 232)");
             
-        };//EndFunction.
+        };//EndFunction.*/
 
 
 

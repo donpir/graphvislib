@@ -141,6 +141,7 @@
             var svg = d3.select("#placeholderViz2").append("svg").attr("width", 720).attr("height", 500);
             var myGraph = SimilarityGraphViz(new SingleEdgeGraphBehaviour());
             myGraph(graphModel, svg);
+            d3.selectAll("circle").style("fill", "rgb(174, 199, 232)");
         };//EndFunction.
 
         ////////////////////////////////////////////////
